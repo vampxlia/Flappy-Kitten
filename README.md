@@ -1,3 +1,36 @@
-# Flappy Kitty
+# Flappy Kitten
 
---- 
+> A web desktop game inspired by Flappy Bird, made with LibGDX.
+
+---
+
+## Features
+
+- **Main Game Loop:** Fully functional game loop where the player is tasked to dodge obstacles for as long as possible.
+- **Custom Assets and Music:** Game Assets, font and Music were made uniquely for the game.
+- **High Score Persistence:** High Score stored through XML, allowing it to remain persistent between sessions.
+---
+
+## Tech Stack
+
+`Java`
+
+`LibGDX`
+
+`XML`
+
+---
+
+## Prerequisites
+
+Ensure you have the following installed on your machine before running the application:
+
+[TODO]
+
+---
+
+## Getting Started & Setup Instructions
+
+Follow these step-by-step instructions to set up and execute the application locally:
+
+[TODO]
