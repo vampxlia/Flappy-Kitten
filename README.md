@@ -2,6 +2,8 @@
 
 > A web desktop game inspired by Flappy Bird, made with LibGDX.
 
+<img width="1920" height="1033" alt="Screenshot (883)" src="https://github.com/user-attachments/assets/e4467e47-3534-4493-8833-9539c3a2ec8f" />
+
 ---
 
 ## Features
