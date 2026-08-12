@@ -17,6 +17,8 @@
 
 `Java`
 
+`Gradle`
+
 `LibGDX`
 
 `XML`
@@ -26,13 +28,16 @@
 ## Prerequisites
 
 Ensure you have the following installed on your machine before running the application:
-
-[TODO]
+- **Java** or **Java Development Kit** version 21 or higher
 
 ---
 
 ## Getting Started & Setup Instructions
 
-Follow these step-by-step instructions to set up and execute the application locally:
+To run the game simply download and execute the .jar file [here](https://github.com/vampxlia/Flappy-Kitten/releases/latest).
 
-[TODO]
+If you want to compile the game yourself, you can also run the following command on the repository root instead:
+
+```bash
+./gradlew run
+```
