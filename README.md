@@ -41,3 +41,10 @@ If you want to compile the game yourself, you can also run the following command
 ```bash
 ./gradlew run
 ```
+
+### Controls
+
+`Spacebar` - Jump
+`Escape` - Pause / Unpause
+
+---
