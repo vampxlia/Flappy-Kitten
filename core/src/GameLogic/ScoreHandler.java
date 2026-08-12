@@ -35,7 +35,7 @@ public class ScoreHandler {
 
     public ScoreHandler() {
         try {
-            inputFile = new File("database/score.xml");
+            inputFile = new File("core/src/database/score.xml");
 
             dbFactory = DocumentBuilderFactory.newInstance();
             dBuilder = dbFactory.newDocumentBuilder();
