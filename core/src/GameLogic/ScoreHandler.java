@@ -1,5 +1,7 @@
 package GameLogic;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -25,7 +27,8 @@ import java.util.Collections;
 import java.util.NoSuchElementException;
 
 public class ScoreHandler {
-    private final File inputFile;
+    private final FileHandle scoreFile;
+    private final FileHandle scoreDTD;
     private final DocumentBuilderFactory dbFactory;
     private final DocumentBuilder dBuilder;
     private final Document doc;
@@ -35,11 +38,19 @@ public class ScoreHandler {
 
     public ScoreHandler() {
         try {
-            inputFile = new File("core/src/database/score.xml");
+            scoreFile = Gdx.files.local("scores/score.xml");
+            scoreDTD = Gdx.files.local("scores/score.dtd");
+
+            if (!scoreFile.exists()) {
+                scoreFile.writeString("<DataBase><Scores></Scores></DataBase>", false);
+            }
+            if (!scoreDTD.exists()) {
+                scoreDTD.writeString("<!DOCTYPE DataBase [<!ELEMENT DataBase (Scores)*><!ELEMENT Scores (score)*><!ELEMENT score (#PCDATA)>]>", false);
+            }
 
             dbFactory = DocumentBuilderFactory.newInstance();
             dBuilder = dbFactory.newDocumentBuilder();
-            doc = dBuilder.parse(inputFile);
+            doc = dBuilder.parse(scoreFile.read()); // Read using FileHandle InputStream
 
             scores = getScoreList(doc);
             try {
@@ -47,8 +58,6 @@ public class ScoreHandler {
             } catch (NoSuchElementException e) {
                 this.highScore = 0;
             }
-
-            //writeXML(writeScores(doc), Files.newOutputStream(inputFile.toPath()));
 
         } catch (ParserConfigurationException | IOException | SAXException |
                  XPathExpressionException e) {
@@ -68,14 +77,14 @@ public class ScoreHandler {
         try {
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
-
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
 
             DOMSource source = new DOMSource(writeScores(this.doc));
-            StreamResult result = new StreamResult(Files.newOutputStream(inputFile.toPath()));
+
+            StreamResult result = new StreamResult(scoreFile.write(false));
 
             transformer.transform(source, result);
-        } catch (IOException | TransformerException e) {
+        } catch (TransformerException e) {
             throw new RuntimeException(e);
         }
     }
@@ -97,17 +106,5 @@ public class ScoreHandler {
         score.setTextContent(String.valueOf(this.lastScore));
         Scores.appendChild(score);
         return doc;
-
-        //Document doc = dBuilder.newDocument();
-        //Element DataBase = doc.createElement("DataBase");
-        //Element Scores = doc.createElement("Scores");
-        //for (Integer integer : scores) {
-        //    Element score = doc.createElement("score");
-        //    score.setTextContent(String.valueOf(integer));
-        //    Scores.appendChild(score);
-        //}
-        //DataBase.appendChild(Scores);
-        //doc.appendChild(DataBase);
-        //return doc;
     }
 }

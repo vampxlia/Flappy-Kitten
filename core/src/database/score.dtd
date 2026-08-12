@@ -1,5 +1,0 @@
-<!DOCTYPE DataBase [
-        <!ELEMENT DataBase (Scores)*>
-        <!ELEMENT Scores (score)*>
-        <!ELEMENT score (#PCDATA)>
-        ]>
