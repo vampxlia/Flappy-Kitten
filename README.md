@@ -45,6 +45,7 @@ If you want to compile the game yourself, you can also run the following command
 ### Controls
 
 `Spacebar` - Jump
+
 `Escape` - Pause / Unpause
 
 ---
