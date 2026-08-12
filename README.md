@@ -1,6 +1,6 @@
 # Flappy Kitten
 
-> A web desktop game inspired by Flappy Bird, made with LibGDX.
+> A desktop game inspired by Flappy Bird, made with LibGDX.
 
 [demo.webm](https://github.com/user-attachments/assets/e8edfb7d-74dc-4f16-afee-7d4ebe570d1a)
 
